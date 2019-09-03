@@ -1,10 +1,11 @@
 {
   "name": "swaggertotypescript",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "抓取swagger接口并在本地生成接口文件",
   "main": "api.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsc && node dist/api.js"
   },
   "repository": {
     "type": "git",
@@ -24,7 +25,6 @@
     "@types/lodash": "^4.14.136",
     "axios": "^0.18.0",
     "fs": "0.0.1-security",
-    "lodash": "^4.17.11",
-    "translation.js": "^0.7.9"
+    "lodash": "^4.17.11"
   }
 }

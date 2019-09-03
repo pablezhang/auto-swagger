@@ -3,9 +3,8 @@
  * @Autho: 人杰
  * @Date:2019/8/2 19:16
  */
-import {ApiStruct, ApiType, Definitions, DtoItem, DtoName, Path, PathItem, SwaggerUi, Tag} from './swagger-ui';
+import {ApiStruct, ApiType, Definitions, DtoItem, DtoName, Path, PathItem, SwaggerUiD, Tag} from './swagger-ui';
 
-const {youdao} = require('translation.js');
 const axios = require('axios').default;
 const fs = require('fs');
 const {map: _map, entries: _entried, forOwn, forEach, filter, assign, find, reduce} = require('lodash');
@@ -42,22 +41,6 @@ const childFunTemplate = `
     }
 `;
 
-// 翻译结果数据接口
-interface TranslateResult {
-  raw: {
-    errorCode
-  }
-  result: string[]
-}
-
-// 翻译中文名称为英文，并转为驼峰式命名
-async function translateToHumb(znName: string) {
-  const {raw, result = []} = await youdao.translate(znName);
-  // 英文翻译首字母可能大写
-  return (result[0] ||"").toLowerCase()
-}
-
-
 /**
  * 格式化输出请求方法
  * @param functionName
@@ -69,7 +52,7 @@ async function translateToHumb(znName: string) {
  */
 function outputApiMethod(functionName, url, description, summary, method, parameters) {
   const template = [
-    {key: description, name: '接口英文备注'},
+    // {key: description, name: '接口英文备注'},
     {key: summary, name: '接口中文描述'},
     {key: method, name: '接口类型'},
     {key: url, name: '接口地址'}
@@ -200,7 +183,6 @@ function getInitalNetWorkData() {
     });
 }
 
-
 /**
  * 将所有方法格式化并并拼接为字符串
  * @param pathItemList
@@ -226,7 +208,7 @@ getInitalNetWorkData();
 
 
 
-async function convertDataStruct(data: SwaggerUi) {
+async function convertDataStruct(data: SwaggerUiD) {
   let tagGroups: Tag[] = data.tags;
   let paths: Path = data.paths;
   let result = [];
@@ -240,44 +222,15 @@ async function convertDataStruct(data: SwaggerUi) {
         tagDescription: _tag.description.replace(/\s/g, "").replace(/Rest$/, "Service"),
         url: url.replace(/\{/g, "${"),
         type: apiType,
-        description: item.description,
+        description: item.description || item.summary,
         functionName: item.operationId,
         param: item.parameters,
       }))
     })
   });
-
-  // 收集中文描述，并拼接
-  let descList = _map(result, item => {
-    let _item = item.description.replace(/\s*/g, '').split("，")[0];
-     _item =  _item.split(",")[0]
-    ; // todo 依赖后台描述不能出现中文标点符号
-    return _item
-  });
-  //
-  let descListPromise = _map(descList, item => {
-    return translateToHumb(item)
-  }) || [];
-
-  return Promise.all(descListPromise).then(_result => {
-    let funcName = _result;
-    return _map(result, (item, index) => {
-      return assign({}, item, {functionName: convertToHump(funcName[index] + " by " + item.type)})
-    })
-  })
+  return result
 }
 
-/**
- * 将字符串转为驼峰式命名
- * @param str
- */
-function convertToHump(str) {
-  if (!str) return "undefined"
-  const re = /\s(\w)/g;
-  return str.replace(re, function ($0, $1) {
-    return $1.toUpperCase();
-  });
-}
 
 interface interfaceInfo {
   name: string
@@ -285,7 +238,6 @@ interface interfaceInfo {
 }
 
 function getAllInterface(definitionsObj: Definitions): interfaceInfo[] {
-
   return _map((definitionsObj), function (dtoItem: DtoItem, dtoName:DtoName) {
     return {
       name: dtoName,
@@ -294,7 +246,6 @@ function getAllInterface(definitionsObj: Definitions): interfaceInfo[] {
         type: propItem.type,
         description: propItem.description
       }))
-
     }
   })
 }

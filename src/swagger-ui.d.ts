@@ -48,7 +48,7 @@ export enum ApiType {
 }
 
 // 一个完整Swagger-ui页面传回来的数据结构
-export interface SwaggerUi {
+export interface SwaggerUiD {
   // 通常是Controller的名称，在Swagger中也用来分组，以折叠面板来显示
   tags: Tag[]
   // 每个接口的详细信息，包括url、参数、类型
@@ -126,17 +126,3 @@ export interface DtoItem {
 // Dto的名称，如ButtonDto、MenuDto等
 export type DtoName = string;
 
-function getAllInterface(definitionsObj: Definitions) {
-
-  return map((definitionsObj), function (dtoItem: DtoItem, dtoName:DtoName) {
-    return {
-      name: dtoName,
-      keyList: [map(dtoItem.properties, (propItem, keyName) => ({
-        keyName,
-        type: propItem.type,
-        description: propItem.description
-      }))
-      ]
-    }
-  })
-}

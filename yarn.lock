@@ -2,20 +2,10 @@
 # yarn lockfile v1
 
 
-"@types/blueimp-md5@^2.7.0":
-  version "2.7.0"
-  resolved "https://registry.npm.taobao.org/@types/blueimp-md5/download/@types/blueimp-md5-2.7.0.tgz#404222806800478ca2782e8ad46590aba7f14627"
-  integrity sha1-QEIigGgAR4yieC6K1GWQq6fxRic=
-
 "@types/lodash@^4.14.136":
   version "4.14.136"
   resolved "https://registry.npm.taobao.org/@types/lodash/download/@types/lodash-4.14.136.tgz#413e85089046b865d960c9ff1d400e04c31ab60f"
   integrity sha1-QT6FCJBGuGXZYMn/HUAOBMMatg8=
-
-"@types/node@^11.13.7":
-  version "11.13.18"
-  resolved "https://registry.npm.taobao.org/@types/node/download/@types/node-11.13.18.tgz#758ec2bf26339d3cc83da22676b64777d0c2befe"
-  integrity sha1-dY7CvyYznTzIPaImdrZHd9DCvv4=
 
 axios@^0.18.0:
   version "0.18.1"
@@ -24,11 +14,6 @@ axios@^0.18.0:
   dependencies:
     follow-redirects "1.5.10"
     is-buffer "^2.0.2"
-
-blueimp-md5@^2.10.0:
-  version "2.11.0"
-  resolved "https://registry.npm.taobao.org/blueimp-md5/download/blueimp-md5-2.11.0.tgz?cache=0&sync_timestamp=1563185357796&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fblueimp-md5%2Fdownload%2Fblueimp-md5-2.11.0.tgz#eff55d30fe3daddd7e801072e2c4483e5fcfc87c"
-  integrity sha1-7/VdMP49rd1+gBBy4sRIPl/PyHw=
 
 debug@=3.1.0:
   version "3.1.0"
@@ -63,18 +48,3 @@ ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.npm.taobao.org/ms/download/ms-2.0.0.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fms%2Fdownload%2Fms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
   integrity sha1-VgiurfwAvmwpAd9fmGF4jeDVl8g=
-
-translation.js@^0.7.9:
-  version "0.7.9"
-  resolved "https://registry.npm.taobao.org/translation.js/download/translation.js-0.7.9.tgz#ec86639c7d58c3716c65ef03015c8556f2806539"
-  integrity sha1-7IZjnH1Yw3FsZe8DAVyFVvKAZTk=
-  dependencies:
-    "@types/blueimp-md5" "^2.7.0"
-    "@types/node" "^11.13.7"
-    blueimp-md5 "^2.10.0"
-    tslib "^1.9.3"
-
-tslib@^1.9.3:
-  version "1.10.0"
-  resolved "https://registry.npm.taobao.org/tslib/download/tslib-1.10.0.tgz#c3c19f95973fb0a62973fb09d90d961ee43e5c8a"
-  integrity sha1-w8GflZc/sKYpc/sJ2Q2WHuQ+XIo=
