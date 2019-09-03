@@ -1,0 +1,30 @@
+{
+  "name": "swaggertotypescript",
+  "version": "0.0.1",
+  "description": "抓取swagger接口并在本地生成接口文件",
+  "main": "api.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "swagger",
+    "typescript"
+  ],
+  "author": "人杰",
+  "license": "ISC",
+  "bugs": {
+    "url": "http://zhang.peibo@gitlab.yx.com/zhang.peibo/swaggerToService.git"
+  },
+  "homepage": "",
+  "dependencies": {
+    "@types/lodash": "^4.14.136",
+    "axios": "^0.18.0",
+    "fs": "0.0.1-security",
+    "lodash": "^4.17.11",
+    "translation.js": "^0.7.9"
+  }
+}
