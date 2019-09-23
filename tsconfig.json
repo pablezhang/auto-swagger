@@ -2,7 +2,7 @@
   "compilerOptions": {
     /* Basic Options */
     "target": "esnext",                          /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017','ES2018' or 'ESNEXT'. */
-    "module": "es6",                     /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', or 'ESNext'. */
+    "module": "esnext",                     /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', or 'ESNext'. */
     "moduleResolution": "node",
     /* Specify library files to be included in the compilation. */
 //    "typeRoots": ["./global"],
@@ -13,7 +13,7 @@
     "declaration": true,                   /* Generates corresponding '.d.ts' file. */
     "declarationDir": "./lib",
     // "declarationMap": true,                /* Generates a sourcemap for each corresponding '.d.ts' file. */
-    // "sourceMap": true,                     /* Generates corresponding '.map' file. */
+    // "sourceMap": true,           s          /* Generates corresponding '.map' file. */
     // "outFile": "./",                       /* Concatenate and emit output to single file. */
     "outDir": "./dist",                        /* Redirect output structure to the directory. */
 //    "rootDir": "./src", //以此作为根目录，该目录下的文件夹及子文件夹结构会被保留 /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */
@@ -43,7 +43,7 @@
 
     /* Module Resolution Options */
     // "moduleResolution": "node",    /* Since you set module to ESNext, You'd have to set moduleResolution to node explicitly. 配合esnext防止antd module丢失 */        /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */
-    "baseUrl": ".",                       /* Base directory to resolve non-absolute module names. */
+//    "baseUrl": ".",                       /* Base directory to resolve non-absolute module names. */
 //    "paths": {
 //      "Components/*": ["ts-src/Components/*"],
 //      "utils/*": ["ts-src/utils/*"],
@@ -71,7 +71,6 @@
     /* Experimental Options */
     "experimentalDecorators": true,        /* Enables experimental support for ES7 decorators. */
     "emitDecoratorMetadata": true,         /* Enables experimental support for emitting type metadata for decorators. */
-//    "watch": true
   },
   "skipDefaultLibCheck":true,
   "skipLibCheck": true,
@@ -80,13 +79,7 @@
   ],
 
   "exclude": [
-//    "src",
-    "pages",
     "node_modules",
-    "lib",
-    "**/*.wsd",
-    "./*.wsd",
-    "./*.wsd",
-    "./*.d.ts" // 避免编译已经生成过的文件，否则会报错
+    "lib"
   ]
 }

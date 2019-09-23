@@ -2,10 +2,14 @@
   "name": "swaggertotypescript",
   "version": "0.1.0",
   "description": "抓取swagger接口并在本地生成接口文件",
-  "main": "api.js",
+  "main": "dist/api.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "tsc && node dist/api.js"
+    "start": "webpack --progress --env.development --env.nodemon",
+    "product": "webpack --progress ",
+    "publish": "cd dist && npm unlink && npm link"
+  },
+  "bin": {
+    "inter-cli": "src-js/cli.js"
   },
   "repository": {
     "type": "git",
@@ -22,9 +26,21 @@
   },
   "homepage": "",
   "dependencies": {
-    "@types/lodash": "^4.14.136",
+    "@types/inquirer": "^6.5.0",
     "axios": "^0.18.0",
+    "chalk": "^2.4.2",
+    "commander": "^3.0.1",
     "fs": "0.0.1-security",
     "lodash": "^4.17.11"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.138",
+    "@types/node": "^12.7.5",
+    "inquirer": "^7.0.0",
+    "nodemon-webpack-plugin": "^4.1.1",
+    "ts-loader": "^6.1.0",
+    "typescript": "^3.6.3",
+    "webpack": "^4.40.2",
+    "webpack-cli": "^3.3.9"
   }
 }
