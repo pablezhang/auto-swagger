@@ -29,7 +29,7 @@ const childFunTemplate = `
     }
 `;
 
-const outputPath ='haha/hehe';
+const outputPath ='Services';
 
 const excludeParamName = [
   "Application-Key",
