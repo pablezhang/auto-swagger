@@ -4,8 +4,6 @@ const os = require('os');
 const parentFunTemplate = `
 /**
  * @Description: </FileDescription/>
- * @Autho: ${os.hostname()}
- * @Date: ${new Date()}
  */
 import Request from 'utils/Request';
 class </parentFunName/> {
