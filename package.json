@@ -4,8 +4,10 @@
   "description": "抓取swagger接口并在本地生成接口文件",
   "main": "dist/api.js",
   "scripts": {
-    "start": "webpack --progress --env.development --env.nodemon",
+    "start": "tsc -w",
+    "start-ts": "nodemon --watch 'src/**/*.ts' --exec ts-node src/cli.ts",
     "product": "webpack --progress ",
+    "product-ts": "tsc -p . ",
     "publish": "cd dist && npm unlink && npm link"
   },
   "bin": {
@@ -30,8 +32,11 @@
     "axios": "^0.18.0",
     "chalk": "^2.4.2",
     "commander": "^3.0.1",
+    "figlet": "^1.2.4",
     "fs": "0.0.1-security",
-    "lodash": "^4.17.11"
+    "lodash": "^4.17.11",
+    "shelljs": "^0.8.3",
+    "ts-node": "^8.4.1"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.138",
@@ -39,8 +44,6 @@
     "inquirer": "^7.0.0",
     "nodemon-webpack-plugin": "^4.1.1",
     "ts-loader": "^6.1.0",
-    "typescript": "^3.6.3",
-    "webpack": "^4.40.2",
-    "webpack-cli": "^3.3.9"
+    "typescript": "^3.6.3"
   }
 }

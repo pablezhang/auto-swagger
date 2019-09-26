@@ -1,13 +1,12 @@
-const path = require('path')
-const fs = require('fs');
+import {DefaultConfigPath, TargetPath} from "./ConstName";
 import inquirer from 'inquirer';
 import chalk from 'chalk';
-let targetPath = path.resolve('config.js');
-// const config  = require('./config.js');
-// console.log(config, 'config')
+import figlet from 'figlet';
+
+const fs = require('fs');
 
 export default function init() {
-  if(fs.existsSync(targetPath)){
+  if(fs.existsSync(TargetPath)){
   //  连续提问
     inquirer.prompt([
       {
@@ -25,29 +24,34 @@ export default function init() {
       if(answers['init-confirm']){
         copyConfigFile()
       }
-      process.exit(0)
     }).catch(err => {
-      console.log(chalk.red(err))
+      console.log(chalk.red(err));
+      process.exit(0);
     })
   }else{
     copyConfigFile()
   }
-
 }
 
 function copyConfigFile() {
   try {
-    console.log(require('./config.js'), "relative")
-    const isExit = fs.existsSync(path.resolve('./config.js'));
-    const config = require(path.resolve('config.js'))
-    console.log(config)
+    figlet('inter cli', function (err, data) {
+      if(err){
+        console.log(chalk.red('Some thing about figlet is wrong!'));
+      }
+      console.log(chalk.yellow(data));
+      const content = fs.readFileSync(DefaultConfigPath, 'utf8');
+      fs.writeFileSync(TargetPath, content, 'utf8');
+      console.log(chalk.green('初始化完成'));
 
-    // const content = fs.readFileSync(path.join(targetPath), 'utf8')
-    // fs.writeFileSync(targetPath, content, 'utf8');
+      process.exit(0);
+
+    })
   }catch (err) {
-    console.log(chalk.red(err))
+    console.log(chalk.red(err));
+    process.exit(0)
+
+
   }
 
-  // console.log(chalk.green('init inter.config.js had successed.'))
-  process.exit(0);
 }
