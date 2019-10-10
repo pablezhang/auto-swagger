@@ -4,7 +4,7 @@
  * @Date:2019/9/26 17:49
  */
 import SwaggerToServicer from '../../lib/swagger';
-import {TargetPath, DefaultConfigPath} from "./ConstName";
+import {TargetPath, DefaultConfigPath} from "../config/ConstName";
 import Validate from '../../lib/validate'
 import  fs from "fs";
 import chalk from "chalk";
@@ -13,7 +13,7 @@ export default function run() {
   /** 查找配置文件 */
 
   if(!fs.existsSync(TargetPath)){
-    console.log(chalk.yellow('没有找到配置文件inter.config.js，可以使用`inter-cli init`命令初始化一个配置文件inter.config.js'));
+    console.log(chalk.yellow('没有找到配置文件swagger.config.js，推荐使用`swagger-cli init`命令初始化一个配置文件swagger.config.js'));
     process.exit(0);
     return
   }
@@ -22,7 +22,7 @@ export default function run() {
   const defaultConfig = require(DefaultConfigPath);
   let newConfig = merge(defaultConfig, config);
   let swagger = new SwaggerToServicer(newConfig);
-  /** 校验配置问价*/
+  /** 校验配置文件*/
   let {error, message} = Validate.validateUrl(newConfig.url);
   if(error && message){
     console.log(chalk.red(message));

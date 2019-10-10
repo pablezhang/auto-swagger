@@ -1,5 +1,4 @@
-const urlAddress = 'http://192.168.33.8:8464/v2/api-docs';
-const os = require('os');
+const url = 'http://192.168.33.8:8464/v2/api-docs';
 
 const parentFunTemplate = `
 /**
@@ -40,7 +39,7 @@ const config = {
   excludeParamName,
   outputPath,
   parentFunTemplate,
-  url: urlAddress
+  url
 };
 
-exports.config = config;
+module.exports = config;

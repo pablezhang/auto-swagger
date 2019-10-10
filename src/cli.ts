@@ -6,7 +6,7 @@ import {init, run} from './packages/commanders'
 
 program.version('1.0.0', '-v, --version')
   .command('init')
-  .description('初始化inter.config.js文件')
+  .description('初始化swagger.config.js文件')
   .action(init);
 
 program.command('run')

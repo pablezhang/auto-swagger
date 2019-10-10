@@ -5,13 +5,11 @@
   "main": "dist/api.js",
   "scripts": {
     "start": "tsc -w",
-    "start-ts": "nodemon --watch 'src/**/*.ts' --exec ts-node src/cli.ts",
-    "product": "webpack --progress ",
     "product-ts": "tsc -p . ",
     "publish": "cd dist && npm unlink && npm link"
   },
   "bin": {
-    "inter-cli": "src-js/cli.js"
+    "swagger-cli": "src-js/cli.js"
   },
   "repository": {
     "type": "git",

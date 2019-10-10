@@ -1,4 +1,4 @@
-import {DefaultConfigPath, TargetPath} from "./ConstName";
+import {DefaultConfigPath, TargetPath} from "../config/ConstName";
 import inquirer from 'inquirer';
 import chalk from 'chalk';
 import figlet from 'figlet';
@@ -12,7 +12,7 @@ export default function init() {
       {
         name: 'init-confirm',
         type: 'confirm',
-        message: 'inter.config.js is already existed. Are you sure overwrite it?',
+        message: 'swagger.config.js is already existed. Are you sure overwrite it?',
         validate: function (input) {
           if(input !== 'y' && input !== 'n'){
             return 'Please input y or n!'
@@ -35,7 +35,7 @@ export default function init() {
 
 function copyConfigFile() {
   try {
-    figlet('inter cli', function (err, data) {
+    figlet('swagger cli', function (err, data) {
       if(err){
         console.log(chalk.red('Some thing about figlet is wrong!'));
       }
