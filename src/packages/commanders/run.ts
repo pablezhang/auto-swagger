@@ -13,7 +13,7 @@ export default function run() {
   /** 查找配置文件 */
 
   if(!fs.existsSync(TargetPath)){
-    console.log(chalk.yellow('没有找到配置文件swagger.config.js，推荐使用`swagger-cli init`命令初始化一个配置文件swagger.config.js'));
+    console.log(chalk.yellow('没有找到配置文件swagger.config.js，推荐使用`auto-swagger init`命令初始化一个配置文件swagger.config.js'));
     process.exit(0);
     return
   }

@@ -1,5 +1,5 @@
 {
-  "name": "swaggertotypescript",
+  "name": "auto-swagger",
   "version": "0.1.0",
   "description": "抓取swagger接口并在本地生成接口文件",
   "main": "dist/api.js",
@@ -9,7 +9,7 @@
     "publish": "cd dist && npm unlink && npm link"
   },
   "bin": {
-    "swagger-cli": "src-js/cli.js"
+    "auto-swagger": "src-js/cli.js"
   },
   "repository": {
     "type": "git",
@@ -22,7 +22,7 @@
   "author": "人杰",
   "license": "ISC",
   "bugs": {
-    "url": "http://zhang.peibo@gitlab.yx.com/zhang.peibo/swaggerToService.git"
+    "url": "http://zhang.peibo@gitlab.yx.com/yundt/cube/yundt-cube-tools.git"
   },
   "homepage": "",
   "dependencies": {
