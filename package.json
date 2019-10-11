@@ -19,10 +19,10 @@
     "swagger",
     "typescript"
   ],
-  "author": "人杰",
+  "author": "张培博",
   "license": "ISC",
   "bugs": {
-    "url": "http://zhang.peibo@gitlab.yx.com/yundt/cube/yundt-cube-tools.git"
+    "url": "https://github.com/pablezhang/auto-swagger.git"
   },
   "homepage": "",
   "dependencies": {
