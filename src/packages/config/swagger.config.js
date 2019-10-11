@@ -1,4 +1,4 @@
-const url = 'http://192.168.33.8:8464/v2/api-docs';
+const url = '';
 
 const parentFunTemplate = `
 /**
