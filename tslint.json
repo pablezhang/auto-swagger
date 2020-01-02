@@ -1,0 +1,17 @@
+{
+  "extends": ["tslint-config-alloy", "tslint-config-prettier"],
+  "linterOptions": {
+    "exclude": ["**/node_modules/**"]
+  },
+  "rules": {
+    // 这里填入你的项目需要的个性化配置，比如：
+    //
+    // // 一个缩进必须用两个空格替代
+    // // @has-fixer 可自动修复
+    // // @prettier 可交由 prettier 控制
+    // "indent": [true, "spaces", 2]
+    // https://palantir.github.io/tslint/rules/no-unused-expression/
+    "no-unused-expression": [true, "allow-fast-null-checks"],
+    "no-redundant-jsdoc": false
+  }
+}

@@ -12,4 +12,4 @@ bin-release/
 node_modules
 .idea
 dist
-lib
+#./lib

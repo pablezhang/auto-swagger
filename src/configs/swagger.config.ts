@@ -9,7 +9,7 @@ class </parentFunName/> {
   </childFunList/>
 }
 export default new </parentFunName/>`;
-
+const Center = "Data";
 const childFunTemplate = `
   /**
 </childInfo/>
@@ -21,7 +21,8 @@ const childFunTemplate = `
         method:</childrenMetHod/>,
         data: </childrenName/>,
         query: {</QueryNames/>},
-        app: 'user',
+        app: </Centername/>,
+        version: </version/>,
       })
     }
 `;
@@ -39,7 +40,8 @@ const config = {
   excludeParamName,
   outputPath,
   parentFunTemplate,
-  url
+  url,
+  center: Center
 };
 
 module.exports = config;

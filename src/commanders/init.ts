@@ -1,11 +1,14 @@
-import {DefaultConfigPath, TargetPath} from "../config/ConstName";
 import inquirer from 'inquirer';
 import chalk from 'chalk';
 import figlet from 'figlet';
+import {DefaultConfigPath, TargetPath} from "../configs/ConstName";
 
 const fs = require('fs');
 
-export default function init() {
+/**
+ * 初始化生成配置文件
+ */
+export default function init():void {
   if(fs.existsSync(TargetPath)){
   //  连续提问
     inquirer.prompt([
@@ -22,18 +25,22 @@ export default function init() {
       }
     ]).then(answers => {
       if(answers['init-confirm']){
-        copyConfigFile()
+        generateConfigFile()
       }
     }).catch(err => {
       console.log(chalk.red(err));
       process.exit(0);
-    })
-  }else{
-    copyConfigFile()
+    });
+
+    return
   }
+  generateConfigFile()
 }
 
-function copyConfigFile() {
+/**
+ * 为用户生成一份默认配置文件
+ */
+function generateConfigFile() {
   try {
     figlet('swagger cli', function (err, data) {
       if(err){
@@ -45,13 +52,10 @@ function copyConfigFile() {
       console.log(chalk.green('初始化完成'));
 
       process.exit(0);
-
     })
   }catch (err) {
     console.log(chalk.red(err));
     process.exit(0)
-
-
   }
 
 }

@@ -1,8 +1,7 @@
 #!/usr/bin/env node
 import  program from 'commander'
+import {init, run} from "./commanders";
 
-
-import {init, run} from './packages/commanders'
 
 program.version('1.0.0', '-v, --version')
   .command('init')

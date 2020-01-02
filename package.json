@@ -4,12 +4,13 @@
   "description": "抓取swagger接口并在本地生成接口文件",
   "main": "dist/api.js",
   "scripts": {
-    "start": "tsc -w",
-    "product-ts": "tsc -p . ",
-    "publish": "cd dist && npm unlink && npm link"
+    "start": "npm run copyConfig && tsc -w",
+    "product-ts": "npm run copyConfig && tsc ",
+    "publish": "cd dist && npm unlink && npm link",
+    "copyConfig": "cd src/configs && tsc "
   },
   "bin": {
-    "auto-swagger": "src-js/cli.js"
+    "auto-swagger": "dist/index.js"
   },
   "repository": {
     "type": "git",
@@ -33,15 +34,18 @@
     "figlet": "^1.2.4",
     "fs": "0.0.1-security",
     "lodash": "^4.17.11",
-    "shelljs": "^0.8.3",
-    "ts-node": "^8.4.1"
+    "shelljs": "^0.8.3"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.138",
     "@types/node": "^12.7.5",
     "inquirer": "^7.0.0",
     "nodemon-webpack-plugin": "^4.1.1",
+    "prettier": "^1.19.1",
     "ts-loader": "^6.1.0",
+    "ts-node": "^8.5.4",
+    "tslint-config-alloy": "^0.2.1",
+    "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.6.3"
   }
 }
