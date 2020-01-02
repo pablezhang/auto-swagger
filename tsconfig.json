@@ -81,6 +81,7 @@
 
   "exclude": [
     "node_modules",
-    "dist/lib"
+    "dist/lib",
+    "test"
   ]
 }

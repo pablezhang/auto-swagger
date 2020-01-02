@@ -77,7 +77,7 @@ export interface SwaggerUiD {
  //  方法名称
     functionName: string
  //  参数
-   param: object
+   param: ParamInfo[]
  //  参数结构
 
    tagName: string, tagDescription: string, ur: string,summary: string,
