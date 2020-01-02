@@ -17,7 +17,7 @@
   },
   "skipDefaultLibCheck":true,
   "skipLibCheck": true,
-  "files": ["swagger.config.ts"]
+  "exclude": ["swagger.config.ts"]
 
 
 }

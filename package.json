@@ -5,9 +5,9 @@
   "main": "dist/api.js",
   "scripts": {
     "start": "npm run copyConfig && tsc -w",
-    "product-ts": "npm run copyConfig && tsc ",
+    "product-ts": "tsc && npm run copyConfig",
     "publish": "cd dist && npm unlink && npm link",
-    "copyConfig": "cd src/configs && tsc "
+    "copyConfig": "ts-node copy.ts "
   },
   "bin": {
     "auto-swagger": "dist/index.js"

@@ -32,7 +32,10 @@ const outputPath ='Services';
 const excludeParamName = [
   "Application-Key",
   "Access-Token",
-  "extFields"
+  "extFields",
+  "yes.req.instanceId",
+  "yes.req.tenantId",
+  "yes.req.applicationId"
 ];
 
 const config = {
