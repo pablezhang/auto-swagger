@@ -15,7 +15,7 @@ const childFunTemplate = `
 </childInfo/>
 </childParams/>
    */
-    public async </childFunName/> ({</childrenParams/>}) {
+    public async </childFunName/> ({</childrenParams/>}: {</childrenParaTypes/>) {
       return Request({
         </childrenUrl/>,
         method:</childrenMetHod/>,

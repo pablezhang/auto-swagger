@@ -15,7 +15,7 @@ import {
   SwaggerUiD,
   Tag
 } from './swagger-ui';
-import { assign, filter, find, forEach, forOwn, map, reduce, sortBy, uniqBy } from 'lodash';
+import { assign, filter, find, forEach, forOwn, map, reduce, sortBy, uniqBy, chain } from 'lodash';
 
 const axios = require('axios').default;
 // import  axios from 'axios';
@@ -57,6 +57,8 @@ export type ConfigArg = {
   outputPath: string;
   /** 中心名称 */
   center;
+  filterServices?,
+  renderMethod?
 };
 
 export default class SwaggerToService {
@@ -66,14 +68,18 @@ export default class SwaggerToService {
   private childFunTemplate: string;
   private excludeParamName: string[];
   private center: string;
+  private filterServices: string[];
+  private renderMethod: (method: string) => string;
 
-  constructor({ url, parentFunTemplate, childFunTemplate, excludeParamName, outputPath, center }: ConfigArg) {
+  constructor({ url, parentFunTemplate, childFunTemplate, excludeParamName, outputPath, center,filterServices,  renderMethod }: ConfigArg) {
     this.url = url;
     this.parentFunTemplate = parentFunTemplate;
     this.childFunTemplate = childFunTemplate;
     this.excludeParamName = excludeParamName;
     this.outputPath = outputPath; //todo 校验路径有效性
     this.center = center;
+    this.filterServices = filterServices;
+    this.renderMethod = renderMethod
   }
 
   public async main() {
@@ -83,7 +89,12 @@ export default class SwaggerToService {
         const formatPathData: FormattedApiStruct[] = this.convertDataStruct(result.data);
         forOwn(this.listToMap(formatPathData), (value, key) => {
           const _list = key.split('__');
-          this.outputServiceFile(_list[0], _list[1], value);
+          if(this.filterServices ){
+            this.filterServices.includes(_list[0]) && this.outputServiceFile(_list[0], _list[1], value);
+          }else {
+            this.outputServiceFile(_list[0], _list[1], value);
+          }
+
         });
 
         // 多生成一个interface文件
@@ -161,7 +172,7 @@ export default class SwaggerToService {
    * @param method
    * @param parameters
    */
-  private formatApiMethod(functionName, url, description, summary, method, parameters: ParamInfo[]) {
+  private formatApiMethod(functionName, url, description, summary, method, parameters: ParamInfo[]): string {
     const template = [
       { key: summary, name: '接口简介' },
       { key: description, name: '接口备注' },
@@ -174,10 +185,10 @@ export default class SwaggerToService {
       '\n'
     );
 
-    const sortedParams = sortBy(parameters, item => Number(!item.required));
+    const sortedParams = chain(parameters).filter(item => !item.name.includes('.')).sortBy( item => Number(!item.required)).value();
     let ParasOfFn = map(sortedParams, e => e.name).join(',');
     let ParaTypesOfFn = map(sortedParams, e => `${e.name}${e.required ? '' : '?'}`).join(',');
-    this.childFunTemplate
+    return this.childFunTemplate
       .replace('</childInfo/>', DescriptionOfFn)
       .replace('</childParams/>', ParasOfDescription)
       .replace('</childFunName/>', functionName)
@@ -190,9 +201,9 @@ export default class SwaggerToService {
         return `'${version}'`;
       })
       .replace('</Centername/>', `'${this.center}'`)
-      .replace('</childrenMetHod/>', `'${method.toUpperCase()}'`)
-      .replace('</childrenName/>', this.getParamNameInBody(method, parameters))
-      .replace('</QueryNames/>', this.getQueryNameList(parameters).join(','))
+      .replace('</childrenMetHod/>', `'${this.renderMethod ? this.renderMethod(method) : method.toUpperCase()}'`)
+      .replace('</childrenName/>', this.getParamNameInBody(method, sortedParams))
+      .replace('</QueryNames/>', this.getQueryNameList(sortedParams).join(','))
 
       .replace('</childrenParams/>', ParasOfFn)
       .replace('</childrenParaTypes/>', ParaTypesOfFn);

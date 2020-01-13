@@ -1,27 +1,55 @@
-/** @format */
+const url = 'http://192.168.33.12:8954/v2/api-docs';
 
-'use strict';
-var url = '';
-var parentFunTemplate =
-  "\n/**\n * @Description: </FileDescription/>\n */\nimport Request from 'utils/Request';\nclass </parentFunName/> {\n  </childFunList/>\n}\nexport default new </parentFunName/>";
-var Center = 'Data';
-var childFunTemplate =
-  '\n  /**\n</childInfo/>\n</childParams/>\n   */\n    public async </childFunName/> ({</childrenParams/>}) {\n      return Request({\n        </childrenUrl/>,\n        method:</childrenMetHod/>,\n        data: </childrenName/>,\n        query: {</QueryNames/>},\n        app: </Centername/>,\n        version: </version/>,\n      })\n    }\n';
-var outputPath = 'Services';
-var excludeParamName = [
-  'Application-Key',
-  'Access-Token',
-  'extFields',
-  'yes.req.instanceId',
-  'yes.req.tenantId',
-  'yes.req.applicationId'
+const parentFunTemplate = `
+/**
+ * @Description: </FileDescription/>
+ */
+// @ts-ignore
+import Request from 'utils/request';
+class </parentFunName/> {
+  </childFunList/>
+}
+export default new </parentFunName/>`;
+
+const centerName = 'data';
+
+const childFunTemplate = `
+  /**
+</childInfo/>
+</childParams/>
+   */
+    public async </childFunName/> ({</childrenParams/>}: {</childrenParaTypes/>}, restParam={}) {
+      return Request({
+        </childrenUrl/>,
+        method:</childrenMetHod/>,
+        data: </childrenName/>,
+        query: {</QueryNames/>},
+        app: </Centername/>,
+        version: </version/>,
+        ...restParam
+      })
+    }
+`;
+
+
+const outputPath ='Services';
+
+const excludeParamName = [
+  "Application-Key",
+  "Access-Token",
+  "extFields",
+  "yes.req.instanceId",
+  "yes.req.tenantId",
+  "yes.req.applicationId"
 ];
-var config = {
-  childFunTemplate: childFunTemplate,
-  excludeParamName: excludeParamName,
-  outputPath: outputPath,
-  parentFunTemplate: parentFunTemplate,
-  url: url,
-  center: Center
+
+const config = {
+  childFunTemplate,
+  excludeParamName,
+  outputPath,
+  parentFunTemplate,
+  url,
+  center: centerName
 };
+
 module.exports = config;
