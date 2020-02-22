@@ -1,4 +1,7 @@
-const url = 'http://192.168.33.12:8954/v2/api-docs';
+const url = 'http://192.168.33.12:8900/api/user/v2/api-docs';
+// const url = 'https://petstore.swagger.io/v2/swagger.json';
+
+
 
 const parentFunTemplate = `
 /**
@@ -11,7 +14,7 @@ class </parentFunName/> {
 }
 export default new </parentFunName/>`;
 
-const centerName = 'data';
+const centerName = 'user';
 
 const childFunTemplate = `
   /**
