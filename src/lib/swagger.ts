@@ -15,13 +15,13 @@ import {
   SwaggerUiD,
   Tag
 } from './swagger-ui';
-import {filter, find, forEach, forOwn, map, reduce} from 'lodash';
+import { filter, find, forEach, forOwn, map, reduce } from 'lodash';
 
 import fs from 'fs';
 import axios from 'axios';
 import path from 'path';
 import util from './Util';
-import {IOutputController, OutputController} from "./OutptController";
+import { IOutputController, OutputController } from './OutptController';
 
 // 定义父函数模板
 
@@ -64,7 +64,7 @@ export default class SwaggerToService {
       outputPath,
       center,
       filterServices,
-      renderMethod,
+      renderMethod
     }: ConfigArg,
     outputController: Partial<IOutputController> = {}
   ) {
@@ -135,8 +135,6 @@ export default class SwaggerToService {
       }))
     }));
   }
-
-
 
   /**
    * 格式化输出请求方法

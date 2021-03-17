@@ -1,3 +1,5 @@
+/** @format */
+
 const url = '';
 
 const parentFunTemplate = `
@@ -9,7 +11,7 @@ class </parentFunName/> {
   </childFunList/>
 }
 export default new </parentFunName/>`;
-const Center = "Data";
+const Center = 'Data';
 const childFunTemplate = `
   /**
 </childInfo/>
@@ -27,15 +29,15 @@ const childFunTemplate = `
     }
 `;
 
-const outputPath ='Services';
+const outputPath = 'Services';
 
 const excludeParamName = [
-  "Application-Key",
-  "Access-Token",
-  "extFields",
-  "yes.req.instanceId",
-  "yes.req.tenantId",
-  "yes.req.applicationId"
+  'Application-Key',
+  'Access-Token',
+  'extFields',
+  'yes.req.instanceId',
+  'yes.req.tenantId',
+  'yes.req.applicationId'
 ];
 
 const config = {

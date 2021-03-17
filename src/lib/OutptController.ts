@@ -1,7 +1,7 @@
 /** @format */
 
-import {chain, find, map} from 'lodash';
-import {ParamInfo} from './swagger-ui';
+import { chain, find, map } from 'lodash';
+import { ParamInfo } from './swagger-ui';
 
 export interface IOutputController {
   writeFnDoc: (summary, description, method, url) => string;
@@ -9,25 +9,30 @@ export interface IOutputController {
   writeFnBody: Function;
   writeFnParameters: (parameters: ParamInfo[]) => any;
   writeParasDoc: (parameters: ParamInfo[]) => string;
-  replaceChildFn:(replaceChildFnParams:ReplaceChildFnParams) => string
-  writeParaString:(parameters:  ParamInfo[]) => string
-  writeParaTypesString: (parameters: ParamInfo[]) => string
+  replaceChildFn: (replaceChildFnParams: ReplaceChildFnParams) => string;
+  writeParaString: (parameters: ParamInfo[]) => string;
+  writeParaTypesString: (parameters: ParamInfo[]) => string;
 }
 
 export class OutputControllerInsert implements IOutputController {
-
   public writeParaTypesString(parameters: ParamInfo[]) {
-    return map(chain(parameters)
-      .filter(item => !item.name.includes('.'))
-      .sortBy(item => Number(!item.required))
-      .value(), e => `${e.name}${e.required ? '' : '?'}`).join(',');
+    return map(
+      chain(parameters)
+        .filter(item => !item.name.includes('.'))
+        .sortBy(item => Number(!item.required))
+        .value(),
+      e => `${e.name}${e.required ? '' : '?'}`
+    ).join(',');
   }
 
-  public writeParaString(parameters): string{
-    return map(chain(parameters)
-      .filter(item => !item.name.includes('.'))
-      .sortBy(item => Number(!item.required))
-      .value(), e => e.name).join(',')
+  public writeParaString(parameters): string {
+    return map(
+      chain(parameters)
+        .filter(item => !item.name.includes('.'))
+        .sortBy(item => Number(!item.required))
+        .value(),
+      e => e.name
+    ).join(',');
   }
 
   public writeFnDoc(summary, description, method, url) {
