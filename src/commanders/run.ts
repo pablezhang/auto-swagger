@@ -1,7 +1,7 @@
 /**
  * @format
  * @Description:
- * @Autho: luckybo
+ * @Autho:
  * @Date:2019/9/26 17:49
  */
 
@@ -11,7 +11,6 @@ import { merge } from 'lodash';
 import { DefaultConfigPath, TargetPath } from '../configs/ConstName';
 import SwaggerToService from '../lib/swagger';
 import Validate from '../lib/Validate';
-
 export default function run() {
   /** 查找配置文件 */
 
