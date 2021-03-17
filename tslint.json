@@ -4,12 +4,11 @@
     "exclude": ["**/node_modules/**"]
   },
   "rules": {
-    // 这里填入你的项目需要的个性化配置，比如：
-    //
-    // // 一个缩进必须用两个空格替代
     // // @has-fixer 可自动修复
     // // @prettier 可交由 prettier 控制
     // "indent": [true, "spaces", 2]
+    // 指定无隐式依赖，第一个数组为跳过检查的白名单。如不设置白名单，与tsconfig.json中的paths alias冲突
+    "no-implicit-dependencies": [true],
     // https://palantir.github.io/tslint/rules/no-unused-expression/
     "no-unused-expression": [true, "allow-fast-null-checks"],
     "no-redundant-jsdoc": false
