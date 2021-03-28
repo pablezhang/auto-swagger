@@ -1,12 +1,12 @@
 {
   "name": "auto-swagger",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "抓取swagger接口并在本地生成接口文件",
   "main": "dist/api.js",
   "scripts": {
-    "start": "npm run copyConfig && tsc -w",
-    "product-ts": "tsc && npm run copyConfig",
-    "publish": "cd dist && npm unlink && npm link",
+    "dev": "npm run copyConfig && tsc -w",
+    "build": "tsc && npm run copyConfig",
+    "loc-publish": "cd dist && npm unlink && npm link",
     "copyConfig": "ts-node copy.ts "
   },
   "bin": {

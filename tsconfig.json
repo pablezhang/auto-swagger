@@ -45,18 +45,9 @@
     /* Module Resolution Options */
     // "moduleResolution": "node",    /* Since you set module to ESNext, You'd have to set moduleResolution to node explicitly. 配合esnext防止antd module丢失 */        /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */
 //    "baseUrl": ".",                       /* Base directory to resolve non-absolute module names. */
-    "paths": {
-      "Components/*": ["ts-src/Components/*"],
-      "utils/*": ["ts-src/utils/*"],
-      "lodash": ["node_modules/@types/lodash/index.d.ts"],
-      // "react":  ["node_modules/@types/react/index.d.ts"],
-//      "widget":  ["widget/index.js"],
-      "lib/*":  ["lib/*"],
-      "mobx": ["node_modules/mobx/lib/mobx"],
-      "mobx-react": ["node_modules/mobx-react/index.d.ts"],
-      "classnames": ["node_modules/classnames/index.js"],
-      "csstype": ["node_modules/csstype/index.d.ts"] // @types/react 中找不到该文件
-    },                           /* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */
+//    "paths": {
+//
+//    },                           /* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */
     // "rootDirs": [],                        /* List of root folders whose combined content represents the structure of the project at runtime. */
     // "types": [],                           /* Type declaration files to be included in compilation. */
     // "allowSyntheticDefaultImports": true,  /* Allow default imports from modules with no default export. This does not affect code emit, just typechecking. */
