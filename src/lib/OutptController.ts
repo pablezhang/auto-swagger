@@ -2,7 +2,7 @@
 
 import { chain, find, map } from 'lodash';
 import { ParamInfo } from './swagger-ui';
-
+import chalk from 'chalk';
 export interface IOutputController {
   writeFnDoc: (summary, description, method, url) => string;
   writeFnName: Function;
@@ -56,6 +56,20 @@ export class OutputControllerInsert implements IOutputController {
     return map(parameters, paraItem => `   *  @param ${paraItem.name} ${paraItem.description}`).join('\n');
   }
 
+  /**
+   * 替换中模板字符串中的子函数内容
+   * @param childFunTemplate
+   * @param writeFnDoc
+   * @param writeParasDoc
+   * @param functionName
+   * @param url
+   * @param method
+   * @param writeFnParameters
+   * @param writeParaString
+   * @param writeParaTypesString
+   * @param centerName
+   * @param renderMethod
+   */
   public replaceChildFn({
     childFunTemplate,
     writeFnDoc,
@@ -69,6 +83,7 @@ export class OutputControllerInsert implements IOutputController {
     centerName,
     renderMethod
   }: ReplaceChildFnParams): string {
+    console.log(chalk.green(url));
     return childFunTemplate
       .replace('</childInfo/>', writeFnDoc)
       .replace('</childParams/>', writeParasDoc)
@@ -78,6 +93,7 @@ export class OutputControllerInsert implements IOutputController {
         return `url:\`${_url}\``;
       })
       .replace('</version/>', () => {
+        // todo 可配置
         let version = url.match(/^\/v[\d]\//g)[0].replace(/[\\\/]/g, '');
         return `'${version}'`;
       })
@@ -106,8 +122,8 @@ interface ReplaceChildFnParams {
   writeFnDoc: string;
   writeParasDoc: string;
   writeFnParameters: any;
-  functionName: any;
-  url: any;
+  functionName: string;
+  url: string;
   method: any;
   writeParaString: string;
   writeParaTypesString: string;

@@ -1,4 +1,10 @@
-/** @format */
+/**
+ * @format
+ * @author: luckybo
+ * @Date: 2019-09-26 17:49
+ * @description：create a file named swagger.config.js for user
+ * @update: luckybo-2021-03-27 17
+ */
 
 import inquirer from 'inquirer';
 import chalk from 'chalk';
