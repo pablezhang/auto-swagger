@@ -14,9 +14,7 @@
 
 
 ## 如何使用
-### 1、安装auto-swagger
-```npm install auto-swagger -g```
-或
+### 1、安装auto-swagger，我们推荐使用yarn
 ```yarn add auto-swagger -g```
 ### 2、添加配置文件swagger.config.js
 如果你是第一次使用，建议你使用初始化配置命令。打开命令行工具
