@@ -2,7 +2,7 @@
   "name": "auto-swagger",
   "version": "1.0.1",
   "description": "抓取swagger接口并在本地生成接口文件",
-  "main": "dist/api.js",
+  "main": "index.ts",
   "scripts": {
     "dev": "npm run copyConfig && tsc -w",
     "build": "tsc && npm run copyConfig",
