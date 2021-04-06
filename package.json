@@ -1,12 +1,14 @@
 {
   "name": "auto-swagger",
-  "version": "1.0.1",
+  "version": "1.0.7",
   "description": "抓取swagger接口并在本地生成接口文件",
   "main": "index.ts",
   "scripts": {
+    "clean": "rimraf dist",
     "dev": "npm run copyConfig && tsc -w",
     "build": "tsc && npm run copyConfig",
     "loc-publish": "cd dist && npm unlink && npm link",
+    "publish2npm": "npm run clean && npm run build && cd dist && npm publish",
     "copyConfig": "ts-node copy.ts "
   },
   "bin": {
@@ -14,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/pablezhang/auto-swagger.git"
   },
   "keywords": [
     "swagger",
@@ -23,11 +25,10 @@
   "author": "luckybo",
   "license": "ISC",
   "bugs": {
-    "url": ""
+    "url": "https://github.com/pablezhang/auto-swagger/issues"
   },
-  "homepage": "",
+  "homepage": "https://github.com/pablezhang/auto-swagger.git",
   "dependencies": {
-    "@types/inquirer": "^6.5.0",
     "axios": "^0.18.0",
     "chalk": "^2.4.2",
     "commander": "^3.0.1",
@@ -39,11 +40,13 @@
   "devDependencies": {
     "@types/chalk": "^2.2.0",
     "@types/figlet": "^1.2.1",
+    "@types/inquirer": "^6.5.0",
     "@types/lodash": "^4.14.168",
     "@types/node": "12.7.5",
     "inquirer": "^7.0.0",
     "nodemon-webpack-plugin": "^4.1.1",
     "prettier": "^1.19.1",
+    "rimraf": "^3.0.2",
     "ts-loader": "^6.1.0",
     "ts-node": "^8.5.4",
     "tslint": "^6.1.3",
